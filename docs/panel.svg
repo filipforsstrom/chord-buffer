@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="513.29303"
+   height="485.66901"
+   viewBox="0 0 135.80831 128.49993"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="panel.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4213222"
+     inkscape:cx="320.47624"
+     inkscape:cy="280.72453"
+     inkscape:window-width="3440"
+     inkscape:window-height="1387"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1"
+     showguides="true"
+     inkscape:clip-to-page="true"
+     labelstyle="default" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+  <g
+     inkscape:label="Panel"
+     sodipodi:insensitive="true"
+     id="g138">
+    <g
+       inkscape:groupmode="layer"
+       inkscape:label="Simple touch's Panel"
+       inkscape:highlight-color="#77767b"
+       sodipodi:insensitive="true"
+       id="panel">
+      <rect
+         x="0"
+         y="0"
+         width="81.040001"
+         height="128.5"
+         rx="0"
+         ry="0"
+         inkscape:label="Panel"
+         style="fill:#77767b;stroke:none;stroke-width:0mm"
+         id="rect132" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       inkscape:label="Holes layer"
+       inkscape:highlight-color="#3ea4e3"
+       sodipodi:insensitive="true"
+       id="g137">
+      <g
+         inkscape:label="Holes group"
+         style="fill:#ffffff;stroke:none;stroke-width:0"
+         id="g136">
+        <rect
+           x="4.75"
+           y="123.9"
+           width="5.5"
+           height="3.2"
+           rx="1.6"
+           ry="0"
+           inkscape:label="Bottom left"
+           id="rect133" />
+        <rect
+           x="4.75"
+           y="1.4"
+           width="5.5"
+           height="3.2"
+           rx="1.6"
+           ry="0"
+           inkscape:label="Top left"
+           id="rect134" />
+        <rect
+           x="70.790001"
+           y="123.9"
+           width="5.5"
+           height="3.2"
+           rx="1.6"
+           ry="0"
+           inkscape:label="Bottom right"
+           id="rect135" />
+        <rect
+           x="70.790001"
+           y="1.4"
+           width="5.5"
+           height="3.2"
+           rx="1.6"
+           ry="0"
+           inkscape:label="Top right"
+           id="rect136" />
+      </g>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Sliders Group"
+     id="sliders-group">
+    <g
+       inkscape:groupmode="layer"
+       id="g163">
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Coarse"
+         id="g160">
+        <rect
+           x="3.4433074"
+           y="36.622395"
+           width="5.1133852"
+           height="32.499451"
+           rx="0"
+           ry="0"
+           style="fill:#000000;stroke:#000000;stroke-width:0.750553"
+           id="rect160" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Cursor"
+         id="g161">
+        <rect
+           x="0.37527642"
+           y="51.495026"
+           width="11.249447"
+           height="2.7541907"
+           rx="0.0"
+           ry="0.0"
+           style="fill:#000000;stroke:#000000;stroke-width:0.750553"
+           id="rect161" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Tick"
+         id="g162">
+        <path
+           d="M 0.88661434,52.872121 H 11.113385"
+           style="stroke:#000000;stroke-width:0.375276"
+           id="path161" />
+        <rect
+           x="72.653191"
+           y="36.867226"
+           width="5.0104361"
+           height="32.259789"
+           rx="0"
+           ry="0"
+           style="fill:#000000;stroke:#000000;stroke-width:0.740214"
+           id="rect160-3" />
+        <rect
+           x="69.646935"
+           y="51.630184"
+           width="11.022959"
+           height="2.7338803"
+           rx="0.0"
+           ry="0.0"
+           style="fill:#000000;stroke:#000000;stroke-width:0.740214"
+           id="rect161-7" />
+        <path
+           d="M 70.147976,52.99712 H 80.168849"
+           style="stroke:#000000;stroke-width:0.370107"
+           id="path161-8" />
+      </g>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Knobs Group"
+     id="knobs-group">
+    <g
+       inkscape:groupmode="layer"
+       inkscape:label="k1"
+       id="g175">
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Main color"
+         id="g173">
+        <circle
+           cx="19.867123"
+           cy="41.639771"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#000000;stroke:#9a9996;stroke-width:0.5"
+           id="circle173" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Tick"
+         id="g174">
+        <path
+           d="m 19.867122,41.639769 -3.8891,3.8891"
+           inkscape:label="Tick"
+           style="fill:none;stroke:#000000;stroke-width:0.5"
+           id="path173" />
+        <circle
+           cx="19.867123"
+           cy="55.19669"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#000000;stroke:#9a9996;stroke-width:0.5"
+           id="circle173-7" />
+        <path
+           d="m 19.867122,55.196686 -3.8891,3.8891"
+           inkscape:label="Tick"
+           style="fill:none;stroke:#000000;stroke-width:0.5"
+           id="path173-1" />
+        <circle
+           cx="33.714649"
+           cy="41.639774"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#000000;stroke:#9a9996;stroke-width:0.5"
+           id="circle173-7-5" />
+        <path
+           d="m 33.714647,41.639769 -3.8891,3.8891"
+           inkscape:label="Tick"
+           style="fill:none;stroke:#000000;stroke-width:0.5"
+           id="path173-1-4" />
+        <circle
+           cx="47.562176"
+           cy="41.639771"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#000000;stroke:#9a9996;stroke-width:0.5"
+           id="circle173-7-55" />
+        <path
+           d="m 47.56217,41.639769 -3.8891,3.8891"
+           inkscape:label="Tick"
+           style="fill:none;stroke:#000000;stroke-width:0.5"
+           id="path173-1-41" />
+        <circle
+           cx="61.409702"
+           cy="41.639774"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#000000;stroke:#9a9996;stroke-width:0.5"
+           id="circle173-7-52" />
+        <path
+           d="m 61.409701,41.639769 -3.8891,3.8891"
+           inkscape:label="Tick"
+           style="fill:none;stroke:#000000;stroke-width:0.5"
+           id="path173-1-2" />
+        <circle
+           cx="61.409702"
+           cy="55.196693"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#000000;stroke:#9a9996;stroke-width:0.5"
+           id="circle173-7-8" />
+        <path
+           d="m 61.409701,55.196686 -3.8891,3.8891"
+           inkscape:label="Tick"
+           style="fill:none;stroke:#000000;stroke-width:0.5"
+           id="path173-1-417" />
+        <text
+           xml:space="preserve"
+           style="font-size:3.175px;fill:#000000;stroke-width:0.264583"
+           x="4.2087278"
+           y="33.523056"
+           id="text175"><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.264583"
+             x="4.2087278"
+             y="33.523056"
+             id="tspan176">S1</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="73.418205"
+           y="33.523056"
+           id="text177"><tspan
+             sodipodi:role="line"
+             id="tspan177"
+             style="stroke-width:0.264583"
+             x="73.418205"
+             y="33.523056">S2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="18.099014"
+           y="33.527706"
+           id="text178"><tspan
+             sodipodi:role="line"
+             id="tspan178"
+             style="stroke-width:0.264583"
+             x="18.099014"
+             y="33.527706">P2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="32.123314"
+           y="33.527706"
+           id="text178-1"><tspan
+             sodipodi:role="line"
+             id="tspan178-5"
+             style="stroke-width:0.264583"
+             x="32.123314"
+             y="33.527706">P3</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="45.794067"
+           y="33.527706"
+           id="text178-0"><tspan
+             sodipodi:role="line"
+             id="tspan178-1"
+             style="stroke-width:0.264583"
+             x="45.794067"
+             y="33.527706">P4</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="59.818367"
+           y="33.527706"
+           id="text178-00"><tspan
+             sodipodi:role="line"
+             id="tspan178-9"
+             style="stroke-width:0.264583"
+             x="59.818367"
+             y="33.527706">P5</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="59.818367"
+           y="65.267769"
+           id="text178-8"><tspan
+             sodipodi:role="line"
+             id="tspan178-59"
+             style="stroke-width:0.264583"
+             x="59.818367"
+             y="65.267769">P6</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+           x="18.099014"
+           y="65.267769"
+           id="text178-05"><tspan
+             sodipodi:role="line"
+             id="tspan178-6"
+             style="stroke-width:0.264583"
+             x="18.099014"
+             y="65.267769">P1</tspan></text>
+      </g>
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       inkscape:label="switch"
+       id="g239">
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Main color"
+         id="g237">
+        <circle
+           cx="49.006718"
+           cy="90.54892"
+           r="5"
+           inkscape:label="Main"
+           style="fill:#9a9996;stroke:#c01c28;stroke-width:0.5"
+           id="circle237" />
+      </g>
+      <g
+         inkscape:groupmode="layer"
+         inkscape:label="Tick"
+         id="g238">
+        <circle
+           cx="45.117619"
+           cy="94.438011"
+           r="0.5"
+           style="fill:#000000;stroke:none;stroke-width:0.5"
+           id="circle238" />
+      </g>
+    </g>
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;stroke-width:0.264583"
+     x="43.807026"
+     y="83.527359"
+     id="text239"><tspan
+       sodipodi:role="line"
+       id="tspan239"
+       style="stroke-width:0.264583"
+       x="43.807026"
+       y="83.527359">Switch</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.57245px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;fill-opacity:1;stroke-width:0.547703"
+     x="27.86232"
+     y="101.28139"
+     id="text240"
+     transform="scale(0.9211036,1.0856542)"><tspan
+       sodipodi:role="line"
+       id="tspan240"
+       style="fill:#000000;fill-opacity:1;stroke-width:0.547703"
+       x="27.86232"
+       y="101.28139">Keyboard</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.706px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;fill-opacity:1;stroke-width:1.2255"
+     x="26.688593"
+     y="8.4068909"
+     id="text241"
+     transform="scale(1.0267847,0.973914)"><tspan
+       sodipodi:role="line"
+       id="tspan241"
+       style="stroke-width:1.2255"
+       x="26.688593"
+       y="8.4068909">- +</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+     x="23.93729"
+     y="12.472249"
+     id="text242"><tspan
+       sodipodi:role="line"
+       id="tspan242"
+       style="stroke-width:0.264583"
+       x="23.93729"
+       y="12.472249">Base keyboard pitch</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+     x="88.558266"
+     y="37.638573"
+     id="text243"><tspan
+       sodipodi:role="line"
+       id="tspan243"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="37.638573">S1: Octave</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="41.607323"
+       id="tspan244">S2: Random pitch</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="45.576073"
+       id="tspan245">Switch: Keyboard trigger</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="49.544823"
+       id="tspan246">P1: Trigger speed  </tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="53.513573"
+       id="tspan247">P2: Envelope</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="57.482323"
+       id="tspan248">P3: Osc tone</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="61.451073"
+       id="tspan249">P4: Panning/vibrato</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="65.419823"
+       id="tspan250">P5: Scale</tspan><tspan
+       sodipodi:role="line"
+       style="stroke-width:0.264583"
+       x="88.558266"
+       y="69.388573"
+       id="tspan251">P6: Trigger spread</tspan></text>
+</svg>
