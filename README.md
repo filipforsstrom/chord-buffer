@@ -2,6 +2,10 @@
 
 Chord arppegio with a basic FM synth inspired by analog shift register. Built with Synthux Academys Simple Touch but can be used standalone with a Daisy Seed and midi.
 
+Video:
+
+[![Demo](https://img.youtube.com/vi/HEeI8eIcOkY/maxresdefault.jpg)](https://youtu.be/HEeI8eIcOkY?si=6SCOnckzghMNsWxC)
+
 Chord Buffer stores the last 8 notes played and triggers them as a chord with touch, midi or the built-in sequencer. Notes can be spread out when using the sequencer to create a arppegio. The scale selector will quantize all notes to the selected scale and the random pitch slider will randomize the pitch based on probability (0-100%).
 
 ## Requirements
