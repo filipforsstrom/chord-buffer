@@ -20,4 +20,4 @@ preferable use the [Synthux Academy Simple Touch](https://synthuxacademy.com/pro
 1. Follow Electro Smiths guide on how to setup [DaisyExamples](https://github.com/electro-smith/DaisyExamples)
 2. Clone this repo
 3. Update the `Makefile` with the path to your DaisyExamples folder
-4. Run task `build_and_program` to build and upload to your Daisy Seed
+4. Run task `build_and_program_dfu` to build and upload to your Daisy Seed
