@@ -21,7 +21,12 @@ preferable use the [Synthux Academy Simple Touch](https://synthuxacademy.com/pro
 
 ## Installation
 
-1. Follow Electro Smiths guide on how to setup [DaisyExamples](https://github.com/electro-smith/DaisyExamples)
+1. Download the .bin file from the [release page](https://github.com/filipforsstrom/chord-buffer/releases)
+2. Use the [Daisy Web Programmer](https://electro-smith.github.io/Programmer/) to flash your Daisy Seed
+
+## Build from source
+
+1. Follow Electro Smiths guide on how to [setup your development environment](https://github.com/electro-smith/DaisyWiki/wiki/1.-Setting-Up-Your-Development-Environment)
 2. Clone this repo
 3. Update the `Makefile` with the path to your DaisyExamples folder
 4. Run task `build_and_program_dfu` to build and upload to your Daisy Seed
