@@ -22,6 +22,9 @@ void Synth::Init(float sampleRate)
         voices_[i].osc.SetFrequency(200 * i);
         voices_[i].osc.SetRatio(.5f);
 
+        voices_[i].noise.Init(sampleRate);
+        voices_[i].noise.SetFreq(.5f + (i * 0.1));
+
         voices_[i].vib.Init(sampleRate);
         voices_[i].vib.SetFreq(3.f + (i * 0.1));
         voices_[i].vib.Reset(i * 0.1);
@@ -61,7 +64,7 @@ std::pair<float, float> Synth::Process()
         osc = osc * amp * env;
 
         float pan = voices_[i].pan;
-        float rPan = voices_[i].rPan;
+        float rPan = voices_[i].noise.Process() * voices_[i].rAmountPan;
         float combinedPan = pan + rPan;
         combinedPan = std::max(-1.0f, std::min(1.0f, combinedPan));
 
@@ -75,14 +78,6 @@ std::pair<float, float> Synth::Process()
     return {sumLeft, sumRight};
 }
 
-float randomFloat(float min, float max)
-{
-    float random = ((float)rand()) / (float)RAND_MAX;
-    float diff = max - min;
-    float r = random * diff;
-    return min + r;
-}
-
 void Synth::NoteOn(Note note)
 {
     voices_[posVoice_].adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].Atk());
@@ -93,9 +88,6 @@ void Synth::NoteOn(Note note)
     voices_[posVoice_].note = note;
     voices_[posVoice_].gate = true;
     voices_[posVoice_].frequency = mtof(note.pitch);
-
-    float rAmountPan = voices_[posVoice_].rAmountPan;
-    voices_[posVoice_].rPan = randomFloat(-1.0f, 1.0f) * rAmountPan;
 
     posVoice_ = (posVoice_ + 1) % numVoices_;
 }
