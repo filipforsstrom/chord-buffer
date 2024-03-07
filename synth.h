@@ -10,13 +10,13 @@ class Voice
 {
 public:
     Fm2 osc;
+    SmoothRandomGenerator noise;
     float frequency = 440.f;
     Oscillator vib;
     Adsr adsr;
     Note note;
     bool gate;
     float pan = .0f;
-    float rPan = .0f;
     float rAmountPan = .0f;
     float atk = .01f;
     float dec = .01f;
