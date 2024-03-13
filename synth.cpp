@@ -2,6 +2,7 @@
 
 #include "Synth.h"
 #include "register.h"
+#include "daisysp.h"
 
 Synth::Synth(int numVoices)
 {
@@ -152,10 +153,17 @@ void Synth::SetParam(Param param, float value)
 
         for (int i = 0; i < numVoices_; i++)
         {
-            voices_[i].modAtk = (value < 0) ? value * -2 : 0; // change when value is negative
-            voices_[i].modDec = value * 2;
-            voices_[i].modSus = value * -2;
-            voices_[i].modRel = (value < 0) ? value * -2 : value * 8; // change when value is negative or positive
+            float modDec = (value > 0) ? value * .5 : 0;
+            voices_[i].modDec = fmap(modDec, 0, 1, Mapping::EXP);
+
+            float modRel = (value > 0.4) ? value * .3 : 0;
+            voices_[i].modRel = fmap(modRel, 0, 1, Mapping::EXP);
+            // float modAtkValue = (value < 0) ? value * -2 : 0; // change when value is negative
+            // voices_[i].modAtk = fmap(modAtkValue, 0, 1, Mapping::EXP);
+            // voices_[i].modDec = value * 2;
+            // voices_[i].modSus = value * -2;
+            // float modRelValue = (value < 0) ? value * -2 : value * 8;  // change when value is negative or positive
+            // voices_[i].modRel = fmap(modRelValue, 0, 0.1, Mapping::EXP); // change when value is negative or positive
         }
         break;
     case Synth::Param::INDEX:

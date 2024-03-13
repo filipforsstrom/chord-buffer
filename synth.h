@@ -19,20 +19,40 @@ public:
     float pan = .0f;
     float rAmountPan = .0f;
     float atk = .01f;
-    float dec = .01f;
+    float dec = 1.f;
     float sus = .5f;
-    float rel = .1f;
+    float rel = 50.f;
     float modAtk = .0f;
     float modDec = .0f;
     float modSus = .0f;
     float modRel = .0f;
+    const float lowAtk = .003f;
+    const float lowDec = .003f;
+    const float lowSus = .01f;
+    const float lowRel = .1f;
     float index = .0f;
     float vibAmount = .0f;
 
-    float Atk() { return atk + modAtk; };
-    float Dec() { return dec + modDec; };
-    float Sus() { return sus + modSus; };
-    float Rel() { return rel + modRel; };
+    float Atk()
+    {
+        float val = atk * modAtk;
+        return (val < lowAtk) ? lowAtk : val;
+    };
+    float Dec()
+    {
+        float val = dec * modDec;
+        return (val < lowDec) ? lowDec : val;
+    };
+    float Sus()
+    {
+        float val = sus * modSus;
+        return (val < lowSus) ? lowSus : val;
+    };
+    float Rel()
+    {
+        float val = rel * modRel;
+        return (val < lowRel) ? lowRel : val;
+    };
 };
 
 class Synth
