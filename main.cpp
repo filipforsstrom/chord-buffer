@@ -92,7 +92,7 @@ int main(void)
 {
 	hw.Init();
 	hw.StartLog();
-	hw.SetAudioBlockSize(4);
+	hw.SetAudioBlockSize(32);
 	hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ);
 	float sampleRate = hw.AudioSampleRate();
 
