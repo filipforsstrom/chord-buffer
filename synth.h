@@ -18,9 +18,9 @@ public:
     bool gate;
     float pan = .0f;
     float rAmountPan = .0f;
-    float atk = .01f;
+    float atk = 3.01f;
     float dec = 1.f;
-    float sus = .5f;
+    float sus = .0f;
     float rel = 50.f;
     float modAtk = .0f;
     float modDec = .0f;
@@ -28,8 +28,8 @@ public:
     float modRel = .0f;
     const float lowAtk = .003f;
     const float lowDec = .003f;
-    const float lowSus = .01f;
-    const float lowRel = .1f;
+    const float lowSus = .0f;
+    const float lowRel = .003f;
     float index = .0f;
     float vibAmount = .0f;
 

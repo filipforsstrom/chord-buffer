@@ -153,17 +153,31 @@ void Synth::SetParam(Param param, float value)
 
         for (int i = 0; i < numVoices_; i++)
         {
-            float modDec = (value > 0) ? value * .5 : 0;
-            voices_[i].modDec = fmap(modDec, 0, 1, Mapping::EXP);
+            float modAtk = .0f;
+            float modDec = .0f;
+            float modSus = .0f;
+            float modRel = .0f;
 
-            float modRel = (value > 0.4) ? value * .3 : 0;
-            voices_[i].modRel = fmap(modRel, 0, 1, Mapping::EXP);
-            // float modAtkValue = (value < 0) ? value * -2 : 0; // change when value is negative
-            // voices_[i].modAtk = fmap(modAtkValue, 0, 1, Mapping::EXP);
-            // voices_[i].modDec = value * 2;
-            // voices_[i].modSus = value * -2;
-            // float modRelValue = (value < 0) ? value * -2 : value * 8;  // change when value is negative or positive
-            // voices_[i].modRel = fmap(modRelValue, 0, 0.1, Mapping::EXP); // change when value is negative or positive
+            if (value > 0)
+            {
+                voices_[i].modAtk = .0;
+
+                modDec = value * .5;
+                voices_[i].modDec = fmap(modDec, 0, 1, Mapping::EXP);
+
+                modRel = (value > 0.4) ? value * .3 : 0;
+                voices_[i].modRel = fmap(modRel, 0, 1, Mapping::EXP);
+            }
+            else if (value < 0)
+            {
+                modAtk = value;
+                voices_[i].modAtk = fmap(modAtk, 0, 1, Mapping::EXP);
+
+                voices_[i].modDec = .0;
+
+                modRel = value;
+                voices_[i].modRel = fmap(modRel, 0, 1, Mapping::EXP);
+            }
         }
         break;
     case Synth::Param::INDEX:
