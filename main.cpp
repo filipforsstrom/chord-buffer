@@ -100,6 +100,7 @@ int main(void)
 
 	synth.Init(sampleRate);
 	seq.Init(&reg, &synth, &quantizer, sampleRate);
+	reg.Init(&quantizer);
 
 	SynthInterface::Callbacks callbacks;
 	callbacks.noteOnCallback = NoteOnCallback;

@@ -2,6 +2,7 @@
 #define REGISTER_H
 
 #include "daisysp.h"
+#include "quantizer.h"
 
 struct Note
 {
@@ -18,11 +19,13 @@ public:
     };
 
     Register(int size);
+    void Init(Quantizer *quantizer);
     void AddNote(Note note);
     std::vector<Note> GetNotes();
     void SetParam(Param param, float value);
 
 private:
+    Quantizer *quantizer_;
     float randPitchProbability_ = 0.f;
     int randPitchRange_ = 7;
     std::mt19937 rng_;
