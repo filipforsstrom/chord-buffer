@@ -60,6 +60,26 @@ Synth::Param Midi::MapCcToParam(int cc)
     return ccToParam_[cc];
 }
 
+void Midi::SendNoteOn(Note note)
+{
+    uint8_t message[3];
+    message[0] = 0x90 | (0 & 0x0F);              // Note on message start with 0x9
+    message[1] = note.pitch & 0x7F;              // MIDI notes range from 0 to 127
+    message[2] = AmpToVelocity(note.amp) & 0x7F; // MIDI velocity range from 0 to 127
+
+    midiHandler.SendMessage(message, sizeof(message));
+}
+
+void Midi::SendNoteOff(Note note)
+{
+    uint8_t message[3];
+    message[0] = 0x80 | (0 & 0x0F); // Note off message start with 0x8
+    message[1] = note.pitch & 0x7F; // MIDI notes range from 0 to 127
+    message[2] = 0 & 0x7F;          // MIDI velocity range from 0 to 127
+
+    midiHandler.SendMessage(message, sizeof(message));
+}
+
 void Midi::NoteOn(Note note, bool trigger)
 {
     callbacks_.noteOnCallback(note, trigger);
@@ -97,4 +117,9 @@ void Midi::SetQuantizerParam(Quantizer::Param param, float value)
 float Midi::VelocityToAmp(int velocity)
 {
     return (float)velocity / 127.f;
+}
+
+int Midi::AmpToVelocity(float amp)
+{
+    return (int)(amp * 127.f);
 }

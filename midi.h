@@ -8,6 +8,8 @@ public:
     void Process() override;
     void NoteOn(Note note, bool trigger) override;
     void NoteOff(Note note, bool trigger) override;
+    void SendNoteOn(Note note);
+    void SendNoteOff(Note note);
     void SetSynthParam(Synth::Param param, float value) override;
     void SetSeqParam(Seq::Param param, float value) override;
     void SetRegisterParam(Register::Param param, float value) override;
@@ -16,6 +18,7 @@ public:
 
 private:
     float VelocityToAmp(int velocity);
+    int AmpToVelocity(float amp);
     SynthInterface::Callbacks callbacks_;
     std::array<Synth::Param, 3> ccToParam_ = {Synth::Param::PAN, Synth::Param::RAMOUNTPAN};
 };
