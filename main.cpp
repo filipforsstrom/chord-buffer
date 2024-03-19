@@ -36,6 +36,7 @@ void NoteOnCallback(Note note, bool trigger)
 		for (size_t i = 0; i < notes.size(); i++)
 		{
 			synth.NoteOn(notes[i]);
+			midi.SendNoteOn(notes[i]);
 		}
 	}
 }
@@ -48,6 +49,7 @@ void NoteOffCallback(Note note, bool trigger)
 		for (size_t i = 0; i < notes.size(); i++)
 		{
 			synth.NoteOff(notes[i]);
+			midi.SendNoteOff(notes[i]);
 		}
 	}
 }
