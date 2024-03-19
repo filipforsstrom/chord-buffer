@@ -1,4 +1,5 @@
 #include "Register.h"
+#include "quantizer.h"
 
 Register::Register(int size)
 {
@@ -16,6 +17,11 @@ Register::Register(int size)
 
     size_ = size;
     pos_ = 0;
+}
+
+void Register::Init(Quantizer *quantizer)
+{
+    quantizer_ = quantizer;
 }
 
 void Register::AddNote(Note note)
@@ -41,6 +47,8 @@ std::vector<Note> Register::GetNotes()
                 notesOutput_[i].pitch = 0;
             if (notesOutput_[i].pitch > 127)
                 notesOutput_[i].pitch = 127; // assuming MIDI pitch range
+
+            notesOutput_[i].pitch = quantizer_->Quantize(notesOutput_[i].pitch);
         }
         else
         {
