@@ -81,7 +81,7 @@ void Hid::Process()
     controlInput_.pot1 = hw_.adc.GetFloat(0);
     SetSynthParam(Synth::Param::ENVMOD, controlInput_.pot1);
     controlInput_.pot2 = hw_.adc.GetFloat(1);
-    SetSynthParam(Synth::Param::ADSR, controlInput_.pot2);
+    SetSynthParam(Synth::Param::ENVAMP, controlInput_.pot2);
     controlInput_.pot3 = hw_.adc.GetFloat(2);
     SetSynthParam(Synth::Param::INDEX, controlInput_.pot3);
     controlInput_.pot4 = hw_.adc.GetFloat(3);

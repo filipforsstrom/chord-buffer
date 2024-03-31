@@ -14,7 +14,7 @@ public:
     SmoothRandomGenerator noise;
     float frequency = 440.f;
     Oscillator vib;
-    Envelope env;
+    Envelope envAmp;
     Envelope envMod;
     Note note;
     bool gate;
@@ -31,7 +31,7 @@ public:
     {
         PAN,
         RAMOUNTPAN,
-        ADSR,
+        ENVAMP,
         ENVMOD,
         ENVMODDEPTH,
         INDEX,

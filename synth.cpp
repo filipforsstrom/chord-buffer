@@ -32,7 +32,7 @@ void Synth::Init(float sampleRate)
         voices_[i].vib.SetAmp(voices_[i].vibAmount);
         voices_[i].vib.SetWaveform(Oscillator::WAVE_TRI);
 
-        voices_[i].env.Init(sampleRate);
+        voices_[i].envAmp.Init(sampleRate);
         voices_[i].envMod.Init(sampleRate);
     }
 }
@@ -46,7 +46,7 @@ std::pair<float, float> Synth::Process()
     {
         bool gate = voices_[i].gate;
         float amp = voices_[i].note.amp;
-        float env = voices_[i].env.adsr.Process(gate);
+        float env = voices_[i].envAmp.adsr.Process(gate);
         float envMod = voices_[i].envMod.adsr.Process(gate);
         float toneMod = voices_[i].envMod.depth * envMod;
 
@@ -81,10 +81,10 @@ std::pair<float, float> Synth::Process()
 
 void Synth::NoteOn(Note note)
 {
-    voices_[posVoice_].env.adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].env.Atk());
-    voices_[posVoice_].env.adsr.SetTime(ADSR_SEG_DECAY, voices_[posVoice_].env.Dec());
-    voices_[posVoice_].env.adsr.SetSustainLevel(voices_[posVoice_].env.Sus());
-    voices_[posVoice_].env.adsr.SetTime(ADSR_SEG_RELEASE, voices_[posVoice_].env.Rel());
+    voices_[posVoice_].envAmp.adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].envAmp.Atk());
+    voices_[posVoice_].envAmp.adsr.SetTime(ADSR_SEG_DECAY, voices_[posVoice_].envAmp.Dec());
+    voices_[posVoice_].envAmp.adsr.SetSustainLevel(voices_[posVoice_].envAmp.Sus());
+    voices_[posVoice_].envAmp.adsr.SetTime(ADSR_SEG_RELEASE, voices_[posVoice_].envAmp.Rel());
 
     voices_[posVoice_].envMod.adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].envMod.Atk());
     voices_[posVoice_].envMod.adsr.SetTime(ADSR_SEG_DECAY, voices_[posVoice_].envMod.Dec());
@@ -136,12 +136,12 @@ void Synth::SetParam(Param param, float value)
             voices_[i].envMod.depth = pow(value, 3) * 2;
         }
         break;
-    case Synth::Param::ADSR:
+    case Synth::Param::ENVAMP:
         value = (value * 2) - 1; // convert value from 0-1 to -1-1
 
         for (int i = 0; i < numVoices_; i++)
         {
-            voices_[i].env.SetShape(value);
+            voices_[i].envAmp.SetShape(value);
         }
         break;
     case Synth::Param::ENVMOD:
