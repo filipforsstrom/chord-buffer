@@ -79,16 +79,17 @@ void Hid::Process()
     controlInput_.slider2 = hw_.adc.GetFloat(7);
     SetRegisterParam(Register::Param::RAND_PITCH, controlInput_.slider2);
     controlInput_.pot1 = hw_.adc.GetFloat(0);
-    SetSeqParam(Seq::Param::SPEED, controlInput_.pot1);
+    SetSynthParam(Synth::Param::ENVMOD, controlInput_.pot1);
     controlInput_.pot2 = hw_.adc.GetFloat(1);
     SetSynthParam(Synth::Param::ADSR, controlInput_.pot2);
     controlInput_.pot3 = hw_.adc.GetFloat(2);
     SetSynthParam(Synth::Param::INDEX, controlInput_.pot3);
     controlInput_.pot4 = hw_.adc.GetFloat(3);
-    SetSynthParam(Synth::Param::SPACE, controlInput_.pot4);
+    SetSynthParam(Synth::Param::ENVMODDEPTH, controlInput_.pot4);
     controlInput_.pot5 = hw_.adc.GetFloat(4);
-    SetQuantizerParam(Quantizer::Param::SCALE, controlInput_.pot5);
-    SetScale(controlInput_.pot5);
+    SetSeqParam(Seq::Param::SPEED, controlInput_.pot5);
+    SetQuantizerParam(Quantizer::Param::SCALE, 0);
+    SetScale(0);
     controlInput_.pot6 = hw_.adc.GetFloat(5);
     SetSeqParam(Seq::Param::SPREAD, controlInput_.pot6);
 }
