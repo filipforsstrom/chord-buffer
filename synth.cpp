@@ -32,12 +32,8 @@ void Synth::Init(float sampleRate)
         voices_[i].vib.SetAmp(voices_[i].vibAmount);
         voices_[i].vib.SetWaveform(Oscillator::WAVE_TRI);
 
-        voices_[i].adsr.Init(sampleRate);
-
-        voices_[i].adsr.SetTime(ADSR_SEG_ATTACK, voices_[i].atk);
-        voices_[i].adsr.SetTime(ADSR_SEG_DECAY, voices_[i].dec);
-        voices_[i].adsr.SetSustainLevel(voices_[i].sus);
-        voices_[i].adsr.SetTime(ADSR_SEG_RELEASE, voices_[i].rel);
+        voices_[i].envAmp.Init(sampleRate);
+        voices_[i].envMod.Init(sampleRate);
     }
 }
 
@@ -50,9 +46,13 @@ std::pair<float, float> Synth::Process()
     {
         bool gate = voices_[i].gate;
         float amp = voices_[i].note.amp;
-        float env = voices_[i].adsr.Process(gate);
+        float env = voices_[i].envAmp.adsr.Process(gate);
+        float envMod = voices_[i].envMod.adsr.Process(gate);
+        float toneMod = voices_[i].envMod.depth * envMod;
 
-        voices_[i].osc.SetIndex(voices_[i].index);
+        float tone = std::max(0.0f, voices_[i].index + toneMod);
+        voices_[i].osc.SetIndex(tone);
+
         voices_[i].vib.SetAmp(voices_[i].vibAmount);
         float vibrato = voices_[i].vib.Process();
         float freq = voices_[i].frequency;
@@ -81,10 +81,15 @@ std::pair<float, float> Synth::Process()
 
 void Synth::NoteOn(Note note)
 {
-    voices_[posVoice_].adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].Atk());
-    voices_[posVoice_].adsr.SetTime(ADSR_SEG_DECAY, voices_[posVoice_].Dec());
-    voices_[posVoice_].adsr.SetSustainLevel(voices_[posVoice_].Sus());
-    voices_[posVoice_].adsr.SetTime(ADSR_SEG_RELEASE, voices_[posVoice_].Rel());
+    voices_[posVoice_].envAmp.adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].envAmp.Atk());
+    voices_[posVoice_].envAmp.adsr.SetTime(ADSR_SEG_DECAY, voices_[posVoice_].envAmp.Dec());
+    voices_[posVoice_].envAmp.adsr.SetSustainLevel(voices_[posVoice_].envAmp.Sus());
+    voices_[posVoice_].envAmp.adsr.SetTime(ADSR_SEG_RELEASE, voices_[posVoice_].envAmp.Rel());
+
+    voices_[posVoice_].envMod.adsr.SetTime(ADSR_SEG_ATTACK, voices_[posVoice_].envMod.Atk());
+    voices_[posVoice_].envMod.adsr.SetTime(ADSR_SEG_DECAY, voices_[posVoice_].envMod.Dec());
+    voices_[posVoice_].envMod.adsr.SetSustainLevel(voices_[posVoice_].envMod.Sus());
+    voices_[posVoice_].envMod.adsr.SetTime(ADSR_SEG_RELEASE, voices_[posVoice_].envMod.Rel());
 
     voices_[posVoice_].note = note;
     voices_[posVoice_].gate = true;
@@ -124,60 +129,27 @@ void Synth::SetParam(Param param, float value)
             voices_[i].rAmountPan = value;
         }
         break;
-    case Synth::Param::ATK:
+    case Synth::Param::ENVMODDEPTH:
+        value = (value * 2) - 1; // convert value from 0-1 to -1-1
         for (int i = 0; i < numVoices_; i++)
         {
-            voices_[i].atk = value * 2;
+            voices_[i].envMod.depth = pow(value, 3) * 2;
         }
         break;
-    case Synth::Param::DEC:
-        for (int i = 0; i < numVoices_; i++)
-        {
-            voices_[i].dec = value * 2;
-        }
-        break;
-    case Synth::Param::SUS:
-        for (int i = 0; i < numVoices_; i++)
-        {
-            voices_[i].sus = value;
-        }
-        break;
-    case Synth::Param::REL:
-        for (int i = 0; i < numVoices_; i++)
-        {
-            voices_[i].rel = value * 2;
-        }
-        break;
-    case Synth::Param::ADSR:
+    case Synth::Param::ENVAMP:
         value = (value * 2) - 1; // convert value from 0-1 to -1-1
 
         for (int i = 0; i < numVoices_; i++)
         {
-            float modAtk = .0f;
-            float modDec = .0f;
-            float modSus = .0f;
-            float modRel = .0f;
+            voices_[i].envAmp.SetShape(value);
+        }
+        break;
+    case Synth::Param::ENVMOD:
+        value = (value * 2) - 1; // convert value from 0-1 to -1-1
 
-            if (value > 0)
-            {
-                voices_[i].modAtk = .0;
-
-                modDec = value * .5;
-                voices_[i].modDec = fmap(modDec, 0, 1, Mapping::EXP);
-
-                modRel = (value > 0.4) ? value * .3 : 0;
-                voices_[i].modRel = fmap(modRel, 0, 1, Mapping::EXP);
-            }
-            else if (value < 0)
-            {
-                modAtk = value;
-                voices_[i].modAtk = fmap(modAtk, 0, 1, Mapping::EXP);
-
-                voices_[i].modDec = .0;
-
-                modRel = value;
-                voices_[i].modRel = fmap(modRel, 0, 1, Mapping::EXP);
-            }
+        for (int i = 0; i < numVoices_; i++)
+        {
+            voices_[i].envMod.SetShape(value);
         }
         break;
     case Synth::Param::INDEX:
