@@ -31,14 +31,15 @@ void Midi::Process()
         {
             auto note_msg = msg.AsNoteOn();
             Note note = {note_msg.note, VelocityToAmp(note_msg.velocity)};
-            NoteOn(note, true);
+            AddNoteToRegister(note);
+            NoteOn();
             break;
         }
         case MidiMessageType::NoteOff:
         {
             auto note_msg = msg.AsNoteOff();
             Note note = {note_msg.note, 0.f};
-            NoteOff(note, true);
+            NoteOff();
             break;
         }
         case MidiMessageType::ControlChange:
@@ -80,14 +81,19 @@ void Midi::SendNoteOff(Note note)
     midiHandler.SendMessage(message, sizeof(message));
 }
 
-void Midi::NoteOn(Note note, bool trigger)
+void Midi::AddNoteToRegister(Note note)
 {
-    callbacks_.noteOnCallback(note, trigger);
+    callbacks_.addNoteToRegisterCallback(note);
 }
 
-void Midi::NoteOff(Note note, bool trigger)
+void Midi::NoteOn()
 {
-    callbacks_.noteOffCallback(note, trigger);
+    callbacks_.noteOnCallback();
+}
+
+void Midi::NoteOff()
+{
+    callbacks_.noteOffCallback();
 }
 
 void Midi::SetSynthParam(Synth::Param param, float value)

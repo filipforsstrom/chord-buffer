@@ -13,8 +13,9 @@ class SynthInterface
 public:
     struct Callbacks
     {
-        std::function<void(Note, bool)> noteOnCallback;
-        std::function<void(Note, bool)> noteOffCallback;
+        std::function<void(Note)> addNoteToRegisterCallback;
+        std::function<void()> noteOnCallback;
+        std::function<void()> noteOffCallback;
         std::function<void(Synth::Param, float)> setSynthParamCallback;
         std::function<void(Seq::Param, float)> setSeqParamCallback;
         std::function<void(Register::Param, float)> setRegisterParamCallback;
@@ -23,8 +24,9 @@ public:
 
     virtual void Init(const Callbacks &callbacks, daisy::DaisySeed &hw) = 0;
     virtual void Process() = 0;
-    virtual void NoteOn(Note note, bool trigger) = 0;
-    virtual void NoteOff(Note note, bool trigger) = 0;
+    virtual void AddNoteToRegister(Note note) = 0;
+    virtual void NoteOn() = 0;
+    virtual void NoteOff() = 0;
     virtual void SetSynthParam(Synth::Param param, float value) = 0;
     virtual void SetSeqParam(Seq::Param param, float value) = 0;
     virtual void SetRegisterParam(Register::Param param, float value) = 0;

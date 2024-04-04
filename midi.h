@@ -6,8 +6,9 @@ class Midi : public SynthInterface
 public:
     void Init(const SynthInterface::Callbacks &callbacks, daisy::DaisySeed &hw) override;
     void Process() override;
-    void NoteOn(Note note, bool trigger) override;
-    void NoteOff(Note note, bool trigger) override;
+    void AddNoteToRegister(Note note) override;
+    void NoteOn() override;
+    void NoteOff() override;
     void SendNoteOn(Note note);
     void SendNoteOff(Note note);
     void SetSynthParam(Synth::Param param, float value) override;
