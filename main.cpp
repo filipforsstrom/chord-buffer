@@ -25,32 +25,29 @@ Hid hid;
 bool keyMode = true;
 bool seqMode = true;
 
-void NoteOnCallback(Note note, bool trigger)
+void AddNoteToRegister(Note note)
 {
 	note.pitch = quantizer.Quantize(note.pitch);
 	reg.AddNote(note);
+}
 
-	if (trigger)
+void NoteOnCallback()
+{
+	std::vector<Note> notes = reg.GetNotes();
+	for (size_t i = 0; i < notes.size(); i++)
 	{
-		std::vector<Note> notes = reg.GetNotes();
-		for (size_t i = 0; i < notes.size(); i++)
-		{
-			synth.NoteOn(notes[i]);
-			midi.SendNoteOn(notes[i]);
-		}
+		synth.NoteOn(notes[i]);
+		midi.SendNoteOn(notes[i]);
 	}
 }
 
-void NoteOffCallback(Note note, bool trigger)
+void NoteOffCallback()
 {
-	if (trigger)
+	std::vector<Note> notes = reg.GetNotes();
+	for (size_t i = 0; i < notes.size(); i++)
 	{
-		std::vector<Note> notes = reg.GetNotes();
-		for (size_t i = 0; i < notes.size(); i++)
-		{
-			synth.NoteOff(notes[i]);
-			midi.SendNoteOff(notes[i]);
-		}
+		synth.NoteOff(notes[i]);
+		midi.SendNoteOff(notes[i]);
 	}
 }
 
@@ -103,6 +100,7 @@ int main(void)
 	reg.Init(&quantizer);
 
 	SynthInterface::Callbacks callbacks;
+	callbacks.addNoteToRegisterCallback = AddNoteToRegister;
 	callbacks.noteOnCallback = NoteOnCallback;
 	callbacks.noteOffCallback = NoteOffCallback;
 	callbacks.setSynthParamCallback = SetSynthParamCallback;

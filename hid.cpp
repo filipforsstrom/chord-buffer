@@ -51,10 +51,14 @@ void Hid::Process()
                 Note note;
                 int baseNote = controlInput_.BaseNote();
                 int octave = controlInput_.Octave();
-                bool trigger = controlInput_.switch1;
                 note.pitch = baseNote + (scales_[scale_][i] + (octave * 12));
                 note.amp = .5f;
-                NoteOn(note, trigger);
+                AddNoteToRegister(note);
+                bool trigger = controlInput_.switch1;
+                if (trigger)
+                {
+                    NoteOn();
+                }
             }
         }
         else if (!((touchStatus >> i) & 1) && ((prevTouchStatus >> i) & 1))
@@ -66,9 +70,12 @@ void Hid::Process()
                 Note note;
                 int baseNote = controlInput_.BaseNote();
                 int octave = controlInput_.Octave();
-                bool trigger = controlInput_.switch1;
                 note.pitch = baseNote + (scales_[scale_][i] + (octave * 12));
-                NoteOff(note, trigger);
+                bool trigger = controlInput_.switch1;
+                if (trigger)
+                {
+                    NoteOff();
+                }
             }
         }
     }
@@ -94,14 +101,19 @@ void Hid::Process()
     SetSeqParam(Seq::Param::SPREAD, controlInput_.pot6);
 }
 
-void Hid::NoteOn(Note note, bool trigger)
+void Hid::AddNoteToRegister(Note note)
 {
-    callbacks_.noteOnCallback(note, trigger);
+    callbacks_.addNoteToRegisterCallback(note);
 }
 
-void Hid::NoteOff(Note note, bool trigger)
+void Hid::NoteOn()
 {
-    callbacks_.noteOffCallback(note, trigger);
+    callbacks_.noteOnCallback();
+}
+
+void Hid::NoteOff()
+{
+    callbacks_.noteOffCallback();
 }
 
 void Hid::SetSynthParam(Synth::Param param, float value)

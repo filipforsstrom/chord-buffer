@@ -50,8 +50,9 @@ class Hid : public SynthInterface
 public:
     void Init(const SynthInterface::Callbacks &callbacks, daisy::DaisySeed &hw) override;
     void Process() override;
-    void NoteOn(Note note, bool trigger) override;
-    void NoteOff(Note note, bool trigger) override;
+    void AddNoteToRegister(Note note) override;
+    void NoteOn() override;
+    void NoteOff() override;
     void SetSynthParam(Synth::Param param, float value) override;
     void SetSeqParam(Seq::Param param, float value) override;
     void SetRegisterParam(Register::Param param, float value) override;
