@@ -11,6 +11,8 @@
 using namespace daisy;
 using namespace daisysp;
 
+bool logging = false;
+
 const int MAX_VOICES = 8;
 const int MAX_REGISTERS = 8;
 
@@ -37,7 +39,10 @@ void NoteOnCallback()
 	for (size_t i = 0; i < notes.size(); i++)
 	{
 		synth.NoteOn(notes[i]);
-		midi.SendNoteOn(notes[i]);
+		if (!logging)
+		{
+			midi.SendNoteOn(notes[i]);
+		}
 	}
 }
 
@@ -47,7 +52,10 @@ void NoteOffCallback()
 	for (size_t i = 0; i < notes.size(); i++)
 	{
 		synth.NoteOff(notes[i]);
-		midi.SendNoteOff(notes[i]);
+		if (!logging)
+		{
+			midi.SendNoteOff(notes[i]);
+		}
 	}
 }
 
@@ -90,7 +98,6 @@ void AudioCallback(AudioHandle::InputBuffer in, AudioHandle::OutputBuffer out, s
 int main(void)
 {
 	hw.Init();
-	hw.StartLog();
 	hw.SetAudioBlockSize(32);
 	hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ);
 	float sampleRate = hw.AudioSampleRate();
@@ -108,7 +115,16 @@ int main(void)
 	callbacks.setRegisterParamCallback = SetRegisterParamCallback;
 	callbacks.setQuantizerParamCallback = SetQuantizerParamCallback;
 
-	midi.Init(callbacks, hw);
+	if (logging)
+	{
+		hw.StartLog(true);
+		hw.PrintLine("Start log");
+	}
+	else
+	{
+		midi.Init(callbacks, hw);
+	}
+
 	hid.Init(callbacks, hw);
 
 	Switch switch1;
@@ -129,7 +145,10 @@ int main(void)
 	hw.StartAudio(AudioCallback);
 	while (1)
 	{
-		midi.Process();
+		if (!logging)
+		{
+			midi.Process();
+		}
 		hid.Process();
 
 		switch1.Debounce();

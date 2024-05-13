@@ -3,6 +3,7 @@
 #include "hid.h"
 #include "register.h"
 #include "synth.h"
+#include <bitset>
 
 using namespace daisy;
 using namespace daisy::seed;
@@ -28,59 +29,35 @@ void Hid::Init(const SynthInterface::Callbacks &callbacks, DaisySeed &hw)
 
 void Hid::Process()
 {
-    static uint16_t prevTouchStatus = 0; // Keep track of the previous touch status
-    uint16_t touchStatus = mpr121.Touched();
+    static std::bitset<12> previousChannelTouches; // Keep track of the previous touch status
+    std::bitset<12> currentChannelTouches(mpr121.Touched());
 
-    // Check each bit of touchStatus. If a bit is set, it means that the corresponding channel is touched.
-    for (uint8_t i = 0; i < 12; i++)
+    // Check each bit of currentChannelTouches. If a bit is set, it means that the corresponding channel is touched.
+    for (uint8_t channel = 0; channel < 12; channel++)
     {
-        if (((touchStatus >> i) & 1) && !((prevTouchStatus >> i) & 1))
+        if (currentChannelTouches[channel] && !previousChannelTouches[channel])
         {
-            // The i-th channel is touched and was not touched in the previous call to Process.
-            if (i == 10)
+            // If channel 10 or 11 is touched, update controlInput state to settings
+            if (channel == 10 || channel == 11)
             {
-                controlInput_.SetBaseNote(-1);
+                controlInput_.state = ControlInput::State::SETTINGS;
             }
-            else if (i == 11)
-            {
-                controlInput_.SetBaseNote(1);
-            }
-            else
-            {
-                // This means that a touch has begun. Create a Note object and call NoteOn.
-                Note note;
-                int baseNote = controlInput_.BaseNote();
-                int octave = controlInput_.Octave();
-                note.pitch = baseNote + (scales_[scale_][i] + (octave * 12));
-                note.amp = .5f;
-                AddNoteToRegister(note);
-                bool trigger = controlInput_.switch1;
-                if (trigger)
-                {
-                    NoteOn();
-                }
-            }
+
+            HandleTouch(controlInput_.state, channel);
         }
-        else if (!((touchStatus >> i) & 1) && ((prevTouchStatus >> i) & 1))
+        else if (!currentChannelTouches[channel] && previousChannelTouches[channel])
         {
-            // The i-th channel was touched in the previous call to Process but is no longer touched.
-            if (i != 10 && i != 11)
+            // If channel 10 or 11 is released, update controlInput state to keyboard
+            if (channel == 10 || channel == 11)
             {
-                // This means that a touch has ended. Create a Note object and call NoteOff.
-                Note note;
-                int baseNote = controlInput_.BaseNote();
-                int octave = controlInput_.Octave();
-                note.pitch = baseNote + (scales_[scale_][i] + (octave * 12));
-                bool trigger = controlInput_.switch1;
-                if (trigger)
-                {
-                    NoteOff();
-                }
+                controlInput_.state = ControlInput::State::KEYBOARD;
             }
+
+            HandleRelease(controlInput_.state, channel);
         }
     }
 
-    prevTouchStatus = touchStatus; // Update the previous touch status
+    previousChannelTouches = currentChannelTouches; // Update the previous touch status for the next call to Process
 
     controlInput_.slider1 = hw_.adc.GetFloat(6);
     controlInput_.slider2 = hw_.adc.GetFloat(7);
@@ -136,7 +113,96 @@ void Hid::SetQuantizerParam(Quantizer::Param param, float value)
     callbacks_.setQuantizerParamCallback(param, value);
 }
 
-void Hid::SetScale(float value)
+void Hid::SetScale(int index)
 {
-    scale_ = static_cast<int>(value * 3);
+    scale_ = index;
+}
+
+void Hid::HandleTouch(ControlInput::State state, int channel)
+{
+    switch (state)
+    {
+    case ControlInput::State::KEYBOARD:
+        if (channel < 10)
+        {
+            Note note;
+            int baseNote = controlInput_.BaseNote();
+            int octave = controlInput_.Octave();
+            note.pitch = baseNote + (scales_[scale_][channel] + (octave * 12));
+            note.amp = .5f;
+            AddNoteToRegister(note);
+            bool trigger = controlInput_.switch1;
+            if (trigger)
+            {
+                NoteOn();
+            }
+        }
+        break;
+    case ControlInput::State::SETTINGS:
+        if (channel == 0)
+        {
+            hw_.PrintLine("Settings Channel 0");
+        }
+        else if (channel == 1)
+        {
+            hw_.PrintLine("Settings Channel 1");
+        }
+        else if (channel == 2)
+        {
+            hw_.PrintLine("Settings Channel 2");
+        }
+        else if (channel == 3)
+        {
+            hw_.PrintLine("Settings Channel 3");
+        }
+        else if (channel == 4)
+        {
+            hw_.PrintLine("Settings Channel 4");
+        }
+        else if (channel == 5)
+        {
+            hw_.PrintLine("Settings Channel 5");
+        }
+        else if (channel == 6)
+        {
+            hw_.PrintLine("Settings Channel 6");
+        }
+        else if (channel == 7)
+        {
+            hw_.PrintLine("Settings Channel 7");
+        }
+        else if (channel == 8)
+        {
+            hw_.PrintLine("Settings Channel 8");
+        }
+        else if (channel == 9)
+        {
+            hw_.PrintLine("Settings Channel 9");
+        }
+        break;
+    }
+}
+
+void Hid::HandleRelease(ControlInput::State state, int channel)
+{
+    switch (state)
+    {
+    case ControlInput::State::KEYBOARD:
+        if (channel < 10)
+        {
+            Note note;
+            int baseNote = controlInput_.BaseNote();
+            int octave = controlInput_.Octave();
+            note.pitch = baseNote + (scales_[scale_][channel] + (octave * 12));
+            bool trigger = controlInput_.switch1;
+            if (trigger)
+            {
+                NoteOff();
+            }
+        }
+        break;
+    case ControlInput::State::SETTINGS:
+
+        break;
+    }
 }

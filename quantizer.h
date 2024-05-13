@@ -11,9 +11,9 @@ class Quantizer
 public:
     enum Scale
     {
+        CHROMATIC,
         MINOR,
-        MAJOR,
-        CHROMATIC
+        MAJOR
     };
 
     enum class Param
@@ -57,9 +57,9 @@ public:
 private:
     Scale scale_;
     std::map<Scale, std::vector<int>> scales_ = {
-        {MINOR, {0, 2, 3, 5, 7, 8, 10, 12}},                    // C minor scale MIDI notes
-        {MAJOR, {0, 2, 4, 5, 7, 9, 11, 12}},                    // C major scale MIDI notes
-        {CHROMATIC, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}} // C chromatic scale MIDI notes
+        {CHROMATIC, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}}, // Chromatic
+        {MINOR, {0, 2, 3, 5, 7, 8, 10, 12}},                 // Minor
+        {MAJOR, {0, 2, 4, 5, 7, 9, 11, 12}}                  // Major
     };
 };
 

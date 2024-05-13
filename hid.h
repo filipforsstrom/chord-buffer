@@ -4,6 +4,13 @@
 class ControlInput
 {
 public:
+    enum State
+    {
+        KEYBOARD,
+        SETTINGS
+    };
+
+    State state = KEYBOARD;
     float slider1;
     float slider2;
     float pot1;
@@ -57,7 +64,9 @@ public:
     void SetSeqParam(Seq::Param param, float value) override;
     void SetRegisterParam(Register::Param param, float value) override;
     void SetQuantizerParam(Quantizer::Param param, float value) override;
-    void SetScale(float value);
+    void SetScale(int index);
+    void HandleTouch(ControlInput::State state, int channel);
+    void HandleRelease(ControlInput::State state, int channel);
 
     ControlInput controlInput_;
 
@@ -66,8 +75,8 @@ private:
     SynthInterface::Callbacks callbacks_;
     int scale_ = 0;
     static constexpr int scales_[3][10] = {
-        {21, 23, 24, 26, 28, 29, 31, 33, 35, 36}, // Minor
-        {21, 23, 25, 26, 28, 30, 32, 33, 35, 37}, // Major
-        {21, 22, 23, 24, 25, 26, 27, 28, 29, 30}  // Chromatic
+        {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},     // Chromatic
+        {0, 2, 3, 5, 7, 8, 10, 12, 14, 15}, // Minor
+        {0, 2, 4, 5, 7, 9, 11, 12, 14, 16}, // Major
     };
 };

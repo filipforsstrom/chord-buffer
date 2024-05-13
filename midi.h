@@ -1,3 +1,4 @@
+#include <array>
 #include "daisy_seed.h"
 #include "synthinterface.h"
 
