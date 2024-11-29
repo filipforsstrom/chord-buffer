@@ -1,21 +1,21 @@
 {
-  "configurations": [
-    {
-		"cStandard": "c11",
-		"compilerPath": "${env:GCC_PATH}",
-		"cppStandard": "c++17",
-		"defines": [
-			"_DEBUG",
-			"UNICODE",
-			"_UNICODE"
-		],
-		"includePath": [
-			"${workspaceFolder}/**",
-			"${workspaceFolder}/../libDaisy/**",
-			"${workspaceFolder}/../DaisySP/**"
-		],
-		"name": "Linux"
-	}
-  ],
-  "version": 4
+	"configurations": [
+		{
+			"cStandard": "c11",
+			"compilerPath": "${env:GCC_PATH}",
+			"cppStandard": "c++17",
+			"defines": [
+				"_DEBUG",
+				"UNICODE",
+				"_UNICODE"
+			],
+			"includePath": [
+				"${workspaceFolder}/**",
+				"${workspaceFolder}/../libDaisy/**",
+				"${workspaceFolder}/../DaisySP/**"
+			],
+			"name": "Linux"
+		}
+	],
+	"version": 4
 }

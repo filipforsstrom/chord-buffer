@@ -17,6 +17,7 @@
             gcc-arm-embedded-10
             dfu-util
             openocd
+            cppcheck
           ];
           buildInputs = [
           ];

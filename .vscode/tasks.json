@@ -83,7 +83,7 @@
 			"command": "make",
 			"label": "build_libdaisy",
 			"options": {
-				"cwd": "${env:DAISYEXAMPLES_PATH}/DaisySPlibDaisy"
+				"cwd": "${env:DAISYEXAMPLES_PATH}/libDaisy"
 			},
 			"problemMatcher": [
 				"$gcc"
