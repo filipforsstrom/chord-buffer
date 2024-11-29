@@ -1,6 +1,6 @@
 // Synth.cpp
 
-#include "Synth.h"
+#include "synth.h"
 #include "register.h"
 #include "daisysp.h"
 

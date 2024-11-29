@@ -1,4 +1,4 @@
-#include "Register.h"
+#include "register.h"
 #include "quantizer.h"
 
 Register::Register(int size)
