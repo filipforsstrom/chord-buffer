@@ -5,8 +5,8 @@ TARGET = ChordBuffer
 CPP_SOURCES = main.cpp register.cpp synth.cpp midi.cpp seq.cpp hid.cpp
 
 # Library Locations
-LIBDAISY_DIR = ../libDaisy/
-DAISYSP_DIR = ../DaisySP/
+LIBDAISY_DIR = ${DAISYEXAMPLES_PATH}/libDaisy
+DAISYSP_DIR = ${DAISYEXAMPLES_PATH}/DaisySP
 
 # Core location, and generic Makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core

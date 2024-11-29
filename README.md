@@ -28,5 +28,5 @@ preferable use the [Synthux Academy Simple Touch](https://synthuxacademy.com/pro
 
 1. Follow Electro Smiths guide on how to [setup your development environment](https://github.com/electro-smith/DaisyWiki/wiki/1.-Setting-Up-Your-Development-Environment)
 2. Clone this repo
-3. Update the `Makefile` with the path to your DaisyExamples folder
+3. `export DAISYEXAMPLES_PATH` with the path to your DaisyExamples directory
 4. Run task `build_and_program_dfu` to build and upload to your Daisy Seed

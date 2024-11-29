@@ -22,6 +22,7 @@
           ];
           shellHook = ''
             export GCC_PATH=${pkgs.gcc-arm-embedded-10}/bin
+            export DAISYEXAMPLES_PATH="../DaisyExamples"
           '';
         };
       }
