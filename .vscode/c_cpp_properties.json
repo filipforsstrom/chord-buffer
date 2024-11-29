@@ -2,7 +2,7 @@
 	"configurations": [
 		{
 			"cStandard": "c11",
-			"compilerPath": "${env:GCC_PATH}",
+			"compilerPath": "${env:GCC_PATH}/arm-none-eabi-g++",
 			"cppStandard": "c++17",
 			"defines": [
 				"_DEBUG",
@@ -11,8 +11,8 @@
 			],
 			"includePath": [
 				"${workspaceFolder}/**",
-				"${workspaceFolder}/../libDaisy/**",
-				"${workspaceFolder}/../DaisySP/**"
+				"${env:DAISYEXAMPLES_PATH}/libDaisy/**",
+				"${env:DAISYEXAMPLES_PATH}/DaisySP/**"
 			],
 			"name": "Linux"
 		}
